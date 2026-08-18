@@ -4,11 +4,16 @@ const links = document.querySelectorAll(".nav-links a");
 
 menuBtn.addEventListener("click", () => {
   navLinks.classList.toggle("active");
+
+  menuBtn.textContent = navLinks.classList.contains("active")
+    ? "×"
+    : "☰";
 });
 
-links.forEach(link => {
+links.forEach((link) => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("active");
+    menuBtn.textContent = "☰";
   });
 });
 
