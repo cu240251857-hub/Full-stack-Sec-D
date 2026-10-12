@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Campus Portal{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; }
+        nav { background: #333; color: #fff; padding: 1rem; display: flex; gap: 20px; }
+        nav a { color: #fff; text-decoration: none; padding: 5px 10px; border-radius: 4px; }
+        /* Task 8.1: Custom programmatic marker for active navigation item */
+        nav a.active { background-color: #007bff; font-weight: bold; }
+        .container { padding: 20px; }
+        /* Task 8.2: Persistent user message feedback notification box style */
+        .alert-box { background: #d4edda; color: #155724; padding: 10px; margin-bottom: 15px; border: 1px solid #c3e6cb; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+    <!-- Shared Menu Navigation -->
+    <nav>
+        <a href="{% url 'dashboard' %}" class="{% if active_page == 'dashboard' %}active{% endif %}">Home / Dashboard</a>
+        <a href="{% url 'about' %}" class="{% if active_page == 'about' %}active{% endif %}">About Us</a>
+        <a href="{% url 'contact' %}" class="{% if active_page == 'contact' %}active{% endif %}">Contact Us</a>
+    </nav>
+
+    <div class="container">
+        <!-- Task 8.2: Persistent inherited message placeholder hooks -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert-box">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

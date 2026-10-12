@@ -1,0 +1,26 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<h1>Contact Us Form</h1>
+<p>Provide your feedback parameters below for system verification logs.</p>
+
+<!-- Task 8.3: Professional Contact Us form view page -->
+<form method="POST">
+    {% csrf_token %}
+    <div style="margin-bottom: 10px;">
+        <label>Name:</label><br>
+        <input type="text" name="name" required style="width: 300px; padding: 5px;">
+    </div>
+    <div style="margin-bottom: 10px;">
+        <label>Email:</label><br>
+        <input type="email" name="email" required style="width: 300px; padding: 5px;">
+    </div>
+    <div style="margin-bottom: 10px;">
+        <label>Message / Feedback:</label><br>
+        <textarea name="message" rows="4" required style="width: 300px; padding: 5px;"></textarea>
+    </div>
+    <button type="submit" style="padding: 8px 15px; background: #28a745; color: white; border: none; cursor: pointer;">Submit Feedback</button>
+</form>
+{% endblock %}
